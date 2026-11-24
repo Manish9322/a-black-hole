@@ -140,10 +140,7 @@ export default function BlackHolesGuidePage() {
       <main className="mx-auto max-w-[1380px] px-5 pt-10 pb-24 sm:px-8 sm:pt-14 lg:px-10 xl:px-12 md:pt-16">
         {/* Editorial title header */}
         <header className="max-w-[76ch] pb-10 border-b border-[#d99b78]/18">
-          <p className="font-editorial-mono text-[11px] uppercase tracking-[0.18em] text-[#c79d86]">
-            {SITE_NAME} · Scientific &amp; Visual Guide
-          </p>
-          <h1 className="mt-3 font-editorial-body text-[2.1rem] sm:text-[2.85rem] md:text-[3.3rem] font-semibold leading-[1.1] tracking-[-0.025em] text-[#f7efe9] [text-wrap:balance]">
+          <h1 className="font-editorial-body text-[2.1rem] sm:text-[2.85rem] md:text-[3.3rem] font-semibold leading-[1.1] tracking-[-0.025em] text-[#f7efe9] [text-wrap:balance]">
             Black Holes: Gravity, Light &amp; the Event Horizon
           </h1>
           <p className="mt-5 max-w-[66ch] text-[16.5px] sm:text-[17.5px] leading-[1.72] text-[#cbbab0]">
@@ -151,11 +148,11 @@ export default function BlackHolesGuidePage() {
             and light, what astronomers actually observe, and how those principles shape our
             interactive 3D view.
           </p>
-          <div className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-1 font-editorial-mono text-xs text-[#9c897e]">
+          <div className="mt-6 flex flex-wrap items-center gap-x-2.5 gap-y-1 font-editorial-mono text-xs text-[#9c897e]">
             <span>14 Sections</span>
-            <span aria-hidden="true">·</span>
-            <span>Introductory &amp; Reference Tables</span>
-            <span aria-hidden="true">·</span>
+            <span aria-hidden="true" className="text-[#d99b78]/45">|</span>
+            <span>Introductory &amp; Reference Guide</span>
+            <span aria-hidden="true" className="text-[#d99b78]/45">|</span>
             <span>Companion to Interactive 3D View</span>
           </div>
         </header>
@@ -168,16 +165,16 @@ export default function BlackHolesGuidePage() {
             {/* Inline Index Overview for quick scanning across screen sizes */}
             <section
               aria-label="Document index"
-              className="mb-14 rounded-xl border border-[#d99b78]/14 bg-[#090708] px-5 py-5 sm:px-6 sm:py-6"
+              className="mb-10 border-b border-[#d99b78]/14 pb-10"
             >
               <h2 className="font-editorial-body text-xs font-semibold uppercase tracking-[0.14em] text-[#d99b78]">
                 Document Overview
               </h2>
-              <p className="mt-2 max-w-[68ch] text-sm leading-relaxed text-[#b9a79d]">
+              <p className="mt-2.5 max-w-[68ch] text-[15px] leading-relaxed text-[#b9a79d]">
                 Jump directly to any chapter below, or read straight through from the basics of
                 spacetime curvature to the rendering model behind this website.
               </p>
-              <ol className="mt-4 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-x-6 gap-y-1.5 border-t border-[#d99b78]/12 pt-4">
+              <ol className="mt-5 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-x-6 gap-y-1.5">
                 {tocItems.map((item) => (
                   <li key={item.id}>
                     <a
@@ -272,59 +269,35 @@ export default function BlackHolesGuidePage() {
                       </div>
                     )}
 
-                    {section.table && (
-                      <div className="mt-9">
-                        <div className="mb-3 flex flex-wrap items-baseline justify-between gap-2">
-                          <p className="font-editorial-mono text-xs tracking-wide text-[#baa69a]">
-                            {section.table.caption}
-                          </p>
-                          <p className="font-editorial-mono text-[11px] text-[#948075] md:hidden">
-                            Swipe horizontally to view all columns →
-                          </p>
-                        </div>
-                        <div className="table-scroll overflow-x-auto overscroll-x-contain touch-pan-x rounded-lg border border-[#d99b78]/16 bg-[#080607]">
-                          <table className="w-full min-w-[660px] lg:min-w-0 border-collapse text-left text-[13.5px] sm:text-sm">
-                            <caption className="sr-only">{section.table.caption}</caption>
-                            <thead>
-                              <tr className="border-b border-[#d99b78]/18 bg-[#0e0b0c]">
-                                {section.table.headers.map((header) => (
-                                  <th
-                                    key={header}
-                                    scope="col"
-                                    className="px-4 py-3 font-editorial-body text-[11.5px] font-semibold uppercase tracking-[0.07em] text-[#d99b78] whitespace-nowrap"
-                                  >
-                                    {header}
-                                  </th>
+                    {section.details && (
+                      <div className="mt-9 max-w-[70ch]">
+                        <h3 className="font-editorial-body text-[1.12rem] sm:text-[1.2rem] font-semibold leading-snug tracking-[-0.015em] text-[#f2e5dd]">
+                          {section.details.heading}
+                        </h3>
+                        <ul className="mt-4 divide-y divide-[#d99b78]/12 border-t border-b border-[#d99b78]/12">
+                          {section.details.items.map((item) => (
+                            <li key={item.name} className="py-3.5">
+                              <div className="flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
+                                <span className="font-semibold text-[15.5px] text-[#f5ece6]">
+                                  {item.name}
+                                </span>
+                                {item.meta.map((part) => (
+                                  <span key={part} className="inline-flex items-baseline gap-2.5">
+                                    <span aria-hidden="true" className="text-[#d99b78]/45">
+                                      |
+                                    </span>
+                                    <span className="font-editorial-mono text-xs text-[#c79d86]">
+                                      {part}
+                                    </span>
+                                  </span>
                                 ))}
-                              </tr>
-                            </thead>
-                            <tbody className="divide-y divide-[#d99b78]/10">
-                              {section.table.rows.map((row, rIdx) => (
-                                <tr
-                                  key={rIdx}
-                                  className="align-top transition-colors hover:bg-[#110d0e]/70"
-                                >
-                                  {row.map((cell, cIdx) => (
-                                    <td
-                                      key={cIdx}
-                                      className={`px-4 py-3.5 leading-relaxed ${
-                                        cIdx === 0
-                                          ? 'font-medium text-[#f5ece6] min-w-[140px]'
-                                          : 'text-[#d2c3ba]'
-                                      } ${
-                                        cIdx === 1
-                                          ? 'font-editorial-mono text-[12.5px] tabular-nums min-w-[130px]'
-                                          : ''
-                                      } ${cIdx === 2 ? 'min-w-[140px]' : ''}`}
-                                    >
-                                      {cell}
-                                    </td>
-                                  ))}
-                                </tr>
-                              ))}
-                            </tbody>
-                          </table>
-                        </div>
+                              </div>
+                              <p className="mt-1.5 text-[15px] leading-[1.72] text-[#d6c8bf]">
+                                {item.description}
+                              </p>
+                            </li>
+                          ))}
+                        </ul>
                       </div>
                     )}
 
@@ -350,7 +323,7 @@ export default function BlackHolesGuidePage() {
               </div>
               <Link
                 href="/"
-                className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl border border-[#d99b78]/30 bg-[#140e0d] px-5 py-2.5 text-sm font-medium text-[#fff4ec] whitespace-nowrap shrink-0 transition-colors duration-150 hover:border-[#d99b78]/60 hover:bg-[#1e1513] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d99b78]/60"
+                className="inline-flex self-start sm:self-auto min-h-[44px] items-center justify-center gap-2 rounded-lg border border-[#d99b78]/22 bg-[#0b090a] px-4 py-2.5 text-[13px] sm:text-sm font-medium tracking-[0.01em] text-[#e9dad1] whitespace-nowrap shrink-0 transition-colors duration-150 hover:border-[#d99b78]/45 hover:bg-[#d99b78]/12 hover:text-[#fff5ef] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d99b78]/60"
               >
                 <ArrowLeft className="h-4 w-4 text-[#d99b78]" strokeWidth={1.75} aria-hidden="true" />
                 <span>Explore 3D Black Hole</span>

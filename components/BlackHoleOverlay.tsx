@@ -77,9 +77,9 @@ export default function BlackHoleOverlay({
         initial={{opacity: 0, y: -8}}
         animate={{opacity: 1, y: 0}}
         transition={{duration: 0.9, ease: [0.16, 1, 0.3, 1]}}
-        className="flex items-start justify-between gap-4"
+        className="flex flex-col items-start gap-1.5 sm:flex-row sm:items-start sm:justify-between sm:gap-4"
       >
-        <div className="max-w-[14rem] sm:max-w-sm select-none">
+        <div className="max-w-[18rem] sm:max-w-sm select-none">
           <h1 className="font-display text-[1.65rem] sm:text-[2.25rem] font-semibold tracking-[-0.025em] leading-[1.1] text-[#f4ebe5]/95 [text-wrap:balance] drop-shadow-[0_2px_14px_rgba(0,0,0,0.92)]">
             Black Hole
           </h1>
@@ -88,10 +88,10 @@ export default function BlackHoleOverlay({
           </p>
         </div>
 
-        <nav aria-label="Primary navigation" className="pointer-events-auto shrink-0 pt-1">
+        <nav aria-label="Primary navigation" className="pointer-events-auto shrink-0 sm:pt-1">
           <Link
             href="/black-holes"
-            className="group inline-flex min-h-[44px] items-center gap-1.5 px-2 text-xs sm:text-[13px] font-normal tracking-[0.02em] text-[#ebdcd3]/92 whitespace-nowrap shrink-0 underline decoration-[#d99b78]/40 underline-offset-4 transition-colors duration-150 hover:text-[#fff5ef] hover:decoration-[#d99b78] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d99b78]/60 rounded-md drop-shadow-[0_1px_10px_rgba(0,0,0,0.95)]"
+            className="group inline-flex min-h-[40px] sm:min-h-[44px] items-center gap-1.5 px-0 sm:px-2 text-xs sm:text-[13px] font-normal tracking-[0.02em] text-[#ebdcd3]/92 whitespace-nowrap shrink-0 underline decoration-[#d99b78]/40 underline-offset-4 transition-colors duration-150 hover:text-[#fff5ef] hover:decoration-[#d99b78] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d99b78]/60 rounded-md drop-shadow-[0_1px_10px_rgba(0,0,0,0.95)]"
           >
             <span>Black Hole Guide</span>
             <ArrowUpRight

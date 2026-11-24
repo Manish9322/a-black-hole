@@ -3,10 +3,15 @@ export interface GuideSubsection {
   paragraphs: string[];
 }
 
-export interface GuideTable {
-  caption: string;
-  headers: string[];
-  rows: string[][];
+export interface GuideDetailItem {
+  name: string;
+  meta: string[];
+  description: string;
+}
+
+export interface GuideDetails {
+  heading: string;
+  items: GuideDetailItem[];
 }
 
 export interface GuideSection {
@@ -16,7 +21,7 @@ export interface GuideSection {
   summary: string;
   paragraphs: string[];
   subsections?: GuideSubsection[];
-  table?: GuideTable;
+  details?: GuideDetails;
   closingNote?: string;
 }
 
@@ -95,46 +100,45 @@ export const GUIDE_SECTIONS: GuideSection[] = [
         ],
       },
     ],
-    table: {
-      caption: 'Table 1 — Major features of a black hole system and their physical nature',
-      headers: ['Feature', 'Classification', 'Location (Non-Spinning)', 'Role in the System'],
-      rows: [
-        [
-          'Singularity',
-          'Theoretical limit',
-          'Center (r = 0)',
-          'Where classical spacetime curvature diverges; likely governed by unknown quantum gravity',
-        ],
-        [
-          'Event Horizon',
-          'Spacetime boundary',
-          '1.0 × Rs',
-          'One-way surface beyond which escape velocity exceeds the speed of light',
-        ],
-        [
-          'Photon Sphere',
-          'Optical / orbital shell',
-          '1.5 × Rs',
-          'Unstable region where light can temporarily orbit the black hole',
-        ],
-        [
-          'Black Hole Shadow',
-          'Observational silhouette',
-          '~2.6 × Rs (apparent)',
-          'Dark apparent silhouette cast against surrounding emission by light capture',
-        ],
-        [
-          'Accretion Disk',
-          'Physical matter',
-          '~3 × Rs outward',
-          'Disk of turbulent, friction-heated plasma orbiting outside the horizon',
-        ],
-        [
-          'Relativistic Jets',
-          'Physical plasma outflow',
-          'Polar spin axes',
-          'Collimated beams accelerated by twisted magnetic fields near spinning black holes',
-        ],
+    details: {
+      heading: 'Key Features at a Glance',
+      items: [
+        {
+          name: 'Singularity',
+          meta: ['Theoretical limit', 'Center (r = 0)'],
+          description:
+            'Where classical spacetime curvature diverges; likely governed by unknown quantum gravity.',
+        },
+        {
+          name: 'Event Horizon',
+          meta: ['Spacetime boundary', '1.0 × Rs'],
+          description:
+            'One-way surface beyond which escape velocity exceeds the speed of light.',
+        },
+        {
+          name: 'Photon Sphere',
+          meta: ['Optical / orbital shell', '1.5 × Rs'],
+          description:
+            'Unstable region where light can temporarily orbit the black hole.',
+        },
+        {
+          name: 'Black Hole Shadow',
+          meta: ['Observational silhouette', '~2.6 × Rs (apparent)'],
+          description:
+            'Dark apparent silhouette cast against surrounding emission by light capture.',
+        },
+        {
+          name: 'Accretion Disk',
+          meta: ['Physical matter', '~3 × Rs outward'],
+          description:
+            'Disk of turbulent, friction-heated plasma orbiting outside the horizon.',
+        },
+        {
+          name: 'Relativistic Jets',
+          meta: ['Physical plasma outflow', 'Polar spin axes'],
+          description:
+            'Collimated beams accelerated by twisted magnetic fields near spinning black holes.',
+        },
       ],
     },
   },
@@ -194,34 +198,33 @@ export const GUIDE_SECTIONS: GuideSection[] = [
         ],
       },
     ],
-    table: {
-      caption: 'Table 2 — Classification of black holes by mass and physical status',
-      headers: ['Class', 'Typical Mass', 'Scientific Status', 'Primary Origin'],
-      rows: [
-        [
-          'Stellar-Mass',
-          '~3 – 100 M☉',
-          'Confirmed',
-          'Core collapse of massive stars and binary mergers',
-        ],
-        [
-          'Intermediate-Mass',
-          '~100 – 10⁵ M☉',
-          'Emerging / Candidates',
-          'Successive black hole mergers or runaway stellar collisions in dense clusters',
-        ],
-        [
-          'Supermassive',
-          '~10⁶ – 10¹⁰ M☉',
-          'Confirmed',
-          'Early cosmic seeds growing via gas accretion and galactic mergers',
-        ],
-        [
-          'Primordial',
-          'Sub-planetary to 10⁵ M☉',
-          'Hypothetical (Unconfirmed)',
-          'Proposed density fluctuations in the very early universe',
-        ],
+    details: {
+      heading: 'Mass Classes at a Glance',
+      items: [
+        {
+          name: 'Stellar-Mass',
+          meta: ['~3 – 100 M☉', 'Confirmed'],
+          description:
+            'Formed through the core collapse of massive stars and binary mergers.',
+        },
+        {
+          name: 'Intermediate-Mass',
+          meta: ['~100 – 10⁵ M☉', 'Emerging / Candidates'],
+          description:
+            'Thought to form via successive black hole mergers or runaway stellar collisions in dense clusters.',
+        },
+        {
+          name: 'Supermassive',
+          meta: ['~10⁶ – 10¹⁰ M☉', 'Confirmed'],
+          description:
+            'Grown from early cosmic seeds via gas accretion and galactic mergers.',
+        },
+        {
+          name: 'Primordial',
+          meta: ['Sub-planetary to 10⁵ M☉', 'Hypothetical (Unconfirmed)'],
+          description:
+            'Proposed to arise from extreme density fluctuations in the very early universe.',
+        },
       ],
     },
   },
@@ -385,40 +388,39 @@ export const GUIDE_SECTIONS: GuideSection[] = [
     paragraphs: [
       'Over the past half-century, a handful of real systems have anchored our understanding of black holes across vastly different mass scales and detection methods.',
     ],
-    table: {
-      caption: 'Table 3 — Selected scientifically significant black holes and detections',
-      headers: ['Object / Event', 'Approximate Mass', 'Distance', 'Observational Significance'],
-      rows: [
-        [
-          'Sagittarius A* (Sgr A*)',
-          '~4.3 million M☉',
-          '~26,700 light-years',
-          'Supermassive black hole at the center of the Milky Way; imaged by the EHT (2022) and tracked via orbiting stars like S2',
-        ],
-        [
-          'M87* (Messier 87)',
-          '~6.5 billion M☉',
-          '~55 million light-years',
-          'First black hole shadow ever directly imaged (EHT, 2019); launches a relativistic jet ~5,000 light-years long',
-        ],
-        [
-          'Cygnus X-1',
-          '~21 M☉',
-          '~7,200 light-years',
-          'First widely accepted stellar-mass black hole candidate; bright X-ray binary pulling wind from a blue supergiant star',
-        ],
-        [
-          'GW150914',
-          '~62 M☉ (remnant)',
-          '~1.3 billion light-years',
-          'First direct detection of gravitational waves (LIGO, 2015), formed by the merger of ~36 M☉ and ~29 M☉ black holes',
-        ],
-        [
-          'TON 618',
-          '~40–66 billion M☉',
-          '~10.4 billion light-years (light-travel)',
-          'Hyper-luminous quasar powering one of the most massive black holes estimated in the observable universe',
-        ],
+    details: {
+      heading: 'Notable Black Holes & Detections',
+      items: [
+        {
+          name: 'Sagittarius A* (Sgr A*)',
+          meta: ['~4.3 million M☉', '~26,700 light-years'],
+          description:
+            'Supermassive black hole at the center of the Milky Way; imaged by the EHT (2022) and tracked via orbiting stars like S2.',
+        },
+        {
+          name: 'M87* (Messier 87)',
+          meta: ['~6.5 billion M☉', '~55 million light-years'],
+          description:
+            'First black hole shadow ever directly imaged (EHT, 2019); launches a relativistic jet ~5,000 light-years long.',
+        },
+        {
+          name: 'Cygnus X-1',
+          meta: ['~21 M☉', '~7,200 light-years'],
+          description:
+            'First widely accepted stellar-mass black hole candidate; bright X-ray binary pulling wind from a blue supergiant star.',
+        },
+        {
+          name: 'GW150914',
+          meta: ['~62 M☉ (remnant)', '~1.3 billion light-years'],
+          description:
+            'First direct detection of gravitational waves (LIGO, 2015), formed by the merger of ~36 M☉ and ~29 M☉ black holes.',
+        },
+        {
+          name: 'TON 618',
+          meta: ['~40–66 billion M☉', '~10.4 billion light-years (light-travel)'],
+          description:
+            'Hyper-luminous quasar powering one of the most massive black holes estimated in the observable universe.',
+        },
       ],
     },
   },

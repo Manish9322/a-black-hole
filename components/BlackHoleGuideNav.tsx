@@ -17,14 +17,15 @@ export function TopGuideBar({sections}: BlackHoleGuideNavProps) {
       <div className="mx-auto flex h-14 max-w-[1380px] items-center justify-between gap-4 px-5 sm:px-8 lg:px-10 xl:px-12">
         <Link
           href="/"
-          className="group inline-flex min-h-[44px] items-center gap-2 text-xs sm:text-sm font-medium tracking-[0.015em] text-[#e9dad1] whitespace-nowrap shrink-0 transition-colors duration-150 hover:text-[#fff5ef] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d99b78]/60 rounded-md"
+          aria-label="Back to 3D Black Hole"
+          className="group -ml-2 inline-flex h-10 w-10 items-center justify-center rounded-md text-xs sm:text-sm font-medium tracking-[0.015em] text-[#e9dad1] whitespace-nowrap shrink-0 transition-colors duration-150 hover:text-[#fff5ef] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d99b78]/60 sm:ml-0 sm:h-auto sm:min-h-[44px] sm:w-auto sm:justify-start sm:gap-2"
         >
           <ArrowLeft
-            className="h-4 w-4 text-[#d99b78] transition-transform duration-150 group-hover:-translate-x-0.5"
+            className="h-[18px] w-[18px] sm:h-4 sm:w-4 text-[#d99b78] transition-transform duration-150 group-hover:-translate-x-0.5"
             strokeWidth={1.75}
             aria-hidden="true"
           />
-          <span>Back to 3D Black Hole</span>
+          <span className="hidden sm:inline">Back to 3D Black Hole</span>
         </Link>
 
         <div className="flex items-center gap-2 sm:gap-4 shrink-0">
@@ -33,12 +34,13 @@ export function TopGuideBar({sections}: BlackHoleGuideNavProps) {
             onClick={() => setMobileTocOpen((prev) => !prev)}
             aria-expanded={mobileTocOpen}
             aria-controls="mobile-guide-toc"
-            className="inline-flex min-h-[40px] items-center gap-1.5 rounded-lg border border-[#d99b78]/20 bg-[#0b090a] px-3 text-xs font-medium tracking-wide text-[#decbc0] whitespace-nowrap shrink-0 transition-colors duration-150 hover:border-[#d99b78]/40 hover:text-[#fff5ef] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d99b78]/60 lg:hidden"
+            aria-label={mobileTocOpen ? 'Close table of contents' : 'Open table of contents'}
+            className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-[#d99b78]/20 bg-[#0b090a] text-xs font-medium tracking-wide text-[#decbc0] whitespace-nowrap shrink-0 transition-colors duration-150 hover:border-[#d99b78]/40 hover:text-[#fff5ef] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d99b78]/60 sm:h-auto sm:min-h-[40px] sm:w-auto sm:gap-1.5 sm:px-3 lg:hidden"
           >
-            <List className="h-3.5 w-3.5 text-[#d99b78]" strokeWidth={1.75} aria-hidden="true" />
-            <span>Contents</span>
+            <List className="h-4 w-4 sm:h-3.5 sm:w-3.5 text-[#d99b78]" strokeWidth={1.75} aria-hidden="true" />
+            <span className="hidden sm:inline">Contents</span>
             <ChevronDown
-              className={`h-3.5 w-3.5 transition-transform duration-150 ${mobileTocOpen ? 'rotate-180' : ''}`}
+              className={`hidden sm:inline h-3.5 w-3.5 transition-transform duration-150 ${mobileTocOpen ? 'rotate-180' : ''}`}
               strokeWidth={1.75}
               aria-hidden="true"
             />
@@ -47,10 +49,10 @@ export function TopGuideBar({sections}: BlackHoleGuideNavProps) {
           <a
             href="#top"
             aria-label="Scroll back to top"
-            className="inline-flex min-h-[40px] items-center gap-1.5 px-2 text-xs tracking-wide text-[#baa69b] whitespace-nowrap shrink-0 transition-colors duration-150 hover:text-[#fff5ef] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d99b78]/60 rounded-md"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-[#d99b78]/20 bg-[#0b090a] text-xs tracking-wide text-[#baa69b] whitespace-nowrap shrink-0 transition-colors duration-150 hover:border-[#d99b78]/40 hover:text-[#fff5ef] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d99b78]/60 sm:h-auto sm:min-h-[40px] sm:w-auto sm:gap-1.5 sm:rounded-md sm:border-transparent sm:bg-transparent sm:px-2"
           >
-            <ArrowUp className="h-3.5 w-3.5 text-[#d99b78]/85" strokeWidth={1.75} aria-hidden="true" />
-            <span>Top</span>
+            <ArrowUp className="h-4 w-4 sm:h-3.5 sm:w-3.5 text-[#d99b78]/90" strokeWidth={1.75} aria-hidden="true" />
+            <span className="hidden sm:inline">Top</span>
           </a>
         </div>
       </div>
