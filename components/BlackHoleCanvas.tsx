@@ -60,7 +60,7 @@ export default function BlackHoleCanvas() {
       {/* Dedicated isolated WebGL canvas container */}
       <div
         ref={containerRef}
-        aria-label="Interactive 3D black hole visualization"
+        aria-label="Interactive 3D black hole view"
         className="absolute inset-0 h-full w-full cursor-grab active:cursor-grabbing"
       />
 
@@ -77,8 +77,8 @@ export default function BlackHoleCanvas() {
             />
             <p className="text-sm text-[#c9b2a5]">
               {contextLost
-                ? 'Restoring WebGL rendering context…'
-                : 'Hardware-accelerated WebGL is required for real-time 3D lensing.'}
+                ? 'Restoring 3D graphics…'
+                : 'Your browser needs 3D graphics (WebGL) enabled to view this black hole.'}
             </p>
           </div>
         </div>

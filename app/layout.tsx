@@ -1,44 +1,84 @@
 import type {Metadata, Viewport} from 'next';
-import {Bodoni_Moda, Manrope} from 'next/font/google';
+import {Plus_Jakarta_Sans} from 'next/font/google';
+import {
+  OG_IMAGE_ALT,
+  OG_IMAGE_HEIGHT,
+  OG_IMAGE_PATH,
+  OG_IMAGE_WIDTH,
+  SITE_DESCRIPTION,
+  SITE_KEYWORDS,
+  SITE_NAME,
+  SITE_TITLE,
+  getMetadataBase,
+} from '@/lib/seo';
 import './globals.css';
 
-const bodoni = Bodoni_Moda({
+const jakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
-  weight: ['400', '500'],
-  variable: '--font-display',
-  display: 'swap',
-});
-
-const manrope = Manrope({
-  subsets: ['latin'],
-  weight: ['300', '400', '500'],
+  weight: ['400', '500', '600', '700'],
+  style: ['normal', 'italic'],
   variable: '--font-sans',
   display: 'swap',
 });
 
+const metadataBase = getMetadataBase();
+
 export const metadata: Metadata = {
-  title: 'Singularity — Interactive 3D Black Hole',
-  description:
-    'A cinematic, real-time interactive 3D black hole experience with gravitational lensing, fluid accretion rings, and smooth 360-degree exploration.',
+  ...(metadataBase ? {metadataBase} : {}),
+  title: {
+    default: SITE_TITLE,
+    template: `%s | ${SITE_NAME}`,
+  },
+  description: SITE_DESCRIPTION,
+  applicationName: SITE_NAME,
+  keywords: SITE_KEYWORDS,
+  icons: {
+    icon: [{url: '/icon.svg', type: 'image/svg+xml'}],
+    shortcut: '/icon.svg',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-snippet': -1,
+      'max-image-preview': 'large',
+    },
+  },
   openGraph: {
-    title: 'Singularity — Interactive 3D Black Hole',
-    description:
-      'A cinematic, real-time interactive 3D black hole experience with gravitational lensing, fluid accretion rings, and smooth 360-degree exploration.',
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    siteName: SITE_NAME,
+    locale: 'en_US',
     type: 'website',
+    ...(metadataBase ? {url: '/'} : {}),
+    images: [
+      {
+        url: OG_IMAGE_PATH,
+        width: OG_IMAGE_WIDTH,
+        height: OG_IMAGE_HEIGHT,
+        alt: OG_IMAGE_ALT,
+        type: 'image/jpeg',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Singularity — Interactive 3D Black Hole',
-    description:
-      'A cinematic, real-time interactive 3D black hole experience with gravitational lensing, fluid accretion rings, and smooth 360-degree exploration.',
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    images: [
+      {
+        url: OG_IMAGE_PATH,
+        alt: OG_IMAGE_ALT,
+      },
+    ],
   },
 };
 
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
   themeColor: '#020203',
 };
 
@@ -46,7 +86,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
     <html
       lang="en"
-      className={`${bodoni.variable} ${manrope.variable} dark`}
+      className={`${jakarta.variable} dark`}
     >
       <body className="font-sans bg-[#020203] text-[#f4ece8] antialiased selection:bg-[#d99b78]/30 selection:text-[#fff5ef]">
         {children}

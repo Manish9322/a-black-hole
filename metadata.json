@@ -1,5 +1,5 @@
 {
-  "name": "Singularity — Interactive 3D Black Hole",
+  "name": "Interactive 3D Black Hole",
   "description": "A cinematic, real-time interactive 3D black hole experience with gravitational lensing, fluid accretion rings, and smooth 360-degree exploration.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
